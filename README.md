@@ -1,9 +1,9 @@
 # DhanishandSamRepo
 GES JGSA;GAWNGNJAGI
 
-#Read Me!
+# Read Me!
 
-##Using index.php
+## Using index.php
 
 To connect directly to the index.php page you will need to change a config from the apache server.
 
