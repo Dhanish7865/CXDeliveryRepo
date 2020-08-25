@@ -41,7 +41,7 @@ if ($dbconnect->connect_error) {
 </tr>
 <?php
 
-$query = mysqli_query($dbconnect, "SELECT * FROM user_information")
+$query = mysqli_query($dbconnect, "SELECT * FROM user_information WHERE age%2=0")
   or die (mysqli_error($dbconnect));
 
 while ($row = mysqli_fetch_array($query)) {
