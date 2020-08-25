@@ -14,16 +14,10 @@
   <label for="location">Location:</label><br>
   <input type="text" id="location" name="location"><br>
   <label for="shoe size">Shoe Size:</label><br>
-  <input type="text" id="shoe size" name="shoe size"><br>
+  <input type="text" id="shoe size" name="shoe size"><br><br>
   <input type="submit" value="Submit">
 
 </form>
 
 </body>
-</html
-~                                                                                                                  
-~                                                                                                                  
-~                                                                                                                  
-~                                                                                                                  
-~                                                                                                                  
-~        
+</html>
