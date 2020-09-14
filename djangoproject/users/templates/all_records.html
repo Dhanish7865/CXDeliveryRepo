@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>User List</h1>
+  {% if user_list %}
+    <table border="2">
+      <tbody>
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Age</td>
+          <td>Location</td>
+          <td>Shoe Size</td>
+        </tr>
+        {% for user in user_list %}
+        <tr>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.age }}</td>
+          <td>{{ user.location }}</td>
+          <td>{{ user.shoe_size }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>There are no users in the database.</p>
+  {% endif %}       
+{% endblock %}
