@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 from users.models import UserModel
@@ -21,13 +23,15 @@ def index(request):
 
 from django.views import generic
 
-class EvenUsersView(generic.ListView):
+
+class EvenUsersView(LoginRequiredMixin, generic.ListView):
     model = UserModel
     context_object_name = 'even_user_list'
     queryset =  UserModel.objects.filter(age__iregex='^\d*[02468]$')
     template_name = "even.html"
 
-class AllRecords(generic.ListView):
+
+class AllRecords(LoginRequiredMixin, generic.ListView):
     model = UserModel
     context_object_name = 'user_list'
     queryset = UserModel.objects.all()
