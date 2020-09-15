@@ -6,8 +6,8 @@
   <h2>Dynamic content</h2>
   <p>The library has the following record counts:</p>
   <ul>
-    <li><strong>Page Views:</strong> {{ num_visits }}</li>
     <li><strong>Users:</strong> {{ num_users }}</li>
     <li><strong>Even Age:</strong> {{ num_even_age }}</li>
   </ul>
-{% endblock %}
+  <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+  {% endblock %}
