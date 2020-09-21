@@ -2,6 +2,12 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
+from users.forms import CreateRecord
+
 # Create your views here.
 from users.models import UserModel
 
@@ -36,3 +42,26 @@ class AllRecords(LoginRequiredMixin, generic.ListView):
     context_object_name = 'user_list'
     queryset = UserModel.objects.all()
     template_name = "all_records.html"
+
+@login_required
+def create_record(request, pk):
+    new_user = get_object_or_404(UserModel, pk=pk)
+
+    if request.method == "POST":
+        form = CreateRecord(request.POST)
+        
+        if form.is_valid():
+            new_user.age = form.cleaned_data["age"]
+            new_user.save()
+
+            return HttpResponseRedirect(reverse("all borrowed -not sure what I want here"))
+        
+    else:
+        form = CreateRecord(initial={'age': "101"})
+    
+    context = {
+        'form': form,
+        'new_user': new_user
+    }
+
+    return render(request, 'users/create_record.html', context)
