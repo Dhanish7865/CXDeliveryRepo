@@ -43,18 +43,22 @@ class AllRecords(LoginRequiredMixin, generic.ListView):
     queryset = UserModel.objects.all()
     template_name = "all_records.html"
 
+
+import users.urls 
+
+
 @login_required
-def create_record(request, pk):
-    new_user = get_object_or_404(UserModel, pk=pk)
+def create_record(request):
+    new_user = UserModel
 
     if request.method == "POST":
         form = CreateRecord(request.POST)
         
         if form.is_valid():
             new_user.age = form.cleaned_data["age"]
-            new_user.save()
-
-            return HttpResponseRedirect(reverse("all borrowed -not sure what I want here"))
+            form.save()
+            
+            return HttpResponseRedirect("../all_records")
         
     else:
         form = CreateRecord(initial={'age': "101"})
@@ -64,4 +68,4 @@ def create_record(request, pk):
         'new_user': new_user
     }
 
-    return render(request, 'users/create_record.html', context)
+    return render(request, 'create_record.html', context)
