@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>User List</h1>
+  {% if even_user_list %}
+  <ul>
+    {% for user in even_user_list %}
+      <li>
+        <a href="{{ UserModel.get_absolute_url }}">{{ user.last_name }}</a> {{user.first_name}} ({{user.age}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no users with an even age.</p>
+  {% endif %}       
+{% endblock %}
