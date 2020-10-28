@@ -3,6 +3,8 @@ GES JGSA;GAWNGNJAGI
 
 # Read Me!
 
+Testing git
+
 ## Using index.php
 
 To connect directly to the index.php page you will need to change a config from the apache server.
